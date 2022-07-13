@@ -81,15 +81,25 @@ const Payment = ({
     try {
       setIsLoading(true);
 
-      await fetch("http://localhost:3000/api/pay")
-        .then((res) => res.json())
-        .then((data) => setIsPayed(data));
-    } catch (e) {
-      console.warn(e);
-    } finally {
-      setIsLoading(false);
+      const sendRequestForPay = () => {
+        const response = new Promise((resolve) => {
+          setTimeout(() => {
+            Math.random() < 0.5
+              ? resolve({ message: "Оплата прошла успешно", payed: true })
+              : resolve({ message: "Оплата не прошла", payed: false });
+          }, 3500);
+        });
+
+        return response;
+      }
+
+      await sendRequestForPay()
+        .then(data => setIsPayed(data));
+      await setIsLoading(false);
       PaymentInfo.amount = "";
       PaymentInfo.tel = "";
+    } catch (e) {
+      console.warn(e);
     }
   }
 
