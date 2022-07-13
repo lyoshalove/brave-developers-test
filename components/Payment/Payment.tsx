@@ -82,7 +82,7 @@ const Payment = ({
       setIsLoading(true);
 
       const sendRequestForPay = () => {
-        const response = new Promise((resolve) => {
+        const response = new Promise<IPayResponse>((resolve) => {
           setTimeout(() => {
             Math.random() < 0.5
               ? resolve({ message: "Оплата прошла успешно", payed: true })
@@ -91,7 +91,7 @@ const Payment = ({
         });
 
         return response;
-      }
+      };
 
       await sendRequestForPay()
         .then(data => setIsPayed(data));
