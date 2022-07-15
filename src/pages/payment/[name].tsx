@@ -9,6 +9,7 @@ import { IPayResponse } from "../../types/PayResponse";
 import {Modal} from "../../components/UI/Modal/Modal";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { Container } from "../../components/Container/Container";
 
 const StyledPayment = styled.div`
   max-width: 400px;
@@ -121,7 +122,8 @@ const PaymentPage: NextPage = () => {
       <Head>
         <title>Оплата: {name}</title>
       </Head>
-      <StyledPayment>
+      <Container>
+        <StyledPayment>
         <StyledBack onClick={goToBack}>
           Назад
         </StyledBack>
@@ -155,6 +157,7 @@ const PaymentPage: NextPage = () => {
           {isLoading ? <Loader /> : "Оплатить"}
         </TheButton>
       </StyledPayment>
+      </Container>
       {isPayed.message && (
         <Modal message={isPayed.message} payed={isPayed.payed}></Modal>
       )}
