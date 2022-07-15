@@ -124,39 +124,39 @@ const PaymentPage: NextPage = () => {
       </Head>
       <Container>
         <StyledPayment>
-        <StyledBack onClick={goToBack}>
-          Назад
-        </StyledBack>
-        <StyledLogo>
-          {OperatorImage ? <OperatorImage /> : <h2>{OperatorName}</h2>}
-        </StyledLogo>
-        <StyledTitle>Введите свои данные</StyledTitle>
-        <StyledForm action="#">
-          <InputContainer
-            width100
-            type={"tel"}
-            placeholder={"Введите свой номер"}
-            value={phone}
-            data={"phone"}
-            changeInputValue={changeInputValue}
-          />
-          <InputContainer
-            width100
-            type={"number"}
-            placeholder={"Введите сумму платежа"}
-            value={amount}
-            data={"amount"}
-            changeInputValue={changeInputValue}
-          />
-        </StyledForm>
-        <TheButton
-          disabled={buttonDisabledRule}
-          onClick={() => pay()}
-          center
-        >
-          {isLoading ? <Loader /> : "Оплатить"}
-        </TheButton>
-      </StyledPayment>
+          <StyledBack onClick={goToBack}>
+            Назад
+          </StyledBack>
+          <StyledLogo>
+            {OperatorImage ? <OperatorImage /> : <h2>{OperatorName}</h2>}
+          </StyledLogo>
+          <StyledTitle>Введите свои данные</StyledTitle>
+          <StyledForm action="#">
+            <InputContainer
+              width100
+              type={"tel"}
+              placeholder={"Введите свой номер"}
+              value={phone}
+              data={"phone"}
+              changeInputValue={changeInputValue}
+            />
+            <InputContainer
+              width100
+              type={"number"}
+              placeholder={"Введите сумму платежа"}
+              value={amount}
+              data={"amount"}
+              changeInputValue={changeInputValue}
+            />
+          </StyledForm>
+          <TheButton
+            disabled={buttonDisabledRule}
+            onClick={() => pay()}
+            center
+          >
+            {isLoading ? <Loader /> : "Оплатить"}
+          </TheButton>
+        </StyledPayment>
       </Container>
       {isPayed.message && (
         <Modal message={isPayed.message} payed={isPayed.payed}></Modal>
