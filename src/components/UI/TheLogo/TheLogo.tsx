@@ -6,9 +6,12 @@ const StyledLogo = styled.a`
   color: #3a86ff;
   font-size: 34px;
   font-weight: bold;
-  cursor: pointer;
+  margin: 0 35px 0 0;
   @media (max-width: 768px) {
     font-size: 24px;
+  }
+  @media (max-width: 480px) {
+    font-size: 20px;
   }
 `;
 
