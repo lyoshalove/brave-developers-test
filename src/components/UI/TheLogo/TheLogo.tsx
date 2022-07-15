@@ -6,6 +6,7 @@ const StyledLogo = styled.a`
   color: #3a86ff;
   font-size: 34px;
   font-weight: bold;
+  cursor: pointer;
   @media (max-width: 768px) {
     font-size: 24px;
   }
