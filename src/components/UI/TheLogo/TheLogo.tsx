@@ -7,6 +7,7 @@ const StyledLogo = styled.a`
   font-size: 34px;
   font-weight: bold;
   margin: 0 35px 0 0;
+  cursor: pointer;
   @media (max-width: 768px) {
     font-size: 24px;
   }
