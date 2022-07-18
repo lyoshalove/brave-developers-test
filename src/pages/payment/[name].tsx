@@ -89,7 +89,7 @@ const PaymentPage: NextPage = () => {
             Math.random() < 0.5
               ? resolve({ message: "Оплата прошла успешно", payed: true })
               : resolve({ message: "Оплата не прошла", payed: false });
-          }, 3500);
+          }, 1500);
         });
 
         return response;

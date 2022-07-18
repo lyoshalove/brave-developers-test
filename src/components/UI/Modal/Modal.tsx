@@ -43,7 +43,7 @@ export const Modal: React.FC<IPayResponse> = ({ message, payed }) => {
   }
 
   if (payed) {
-    setTimeout(() => redirectToMain(), 5000);
+    setTimeout(() => redirectToMain(), 2000);
   }
 
   return (
@@ -52,7 +52,7 @@ export const Modal: React.FC<IPayResponse> = ({ message, payed }) => {
         <StyledTitle>{message}</StyledTitle>
         {payed ? (
           <StyledDescription>
-            через 5 секунд вы перейдете на главную страницу
+            через 2 секунды вы перейдете на главную страницу
           </StyledDescription>
         ) : (
           <>

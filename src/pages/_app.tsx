@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import {GlobalStyle} from "../styles/GlobalStyles";
-import {TheHeader} from "../components/TheHeader/TheHeader";
-import {TheFooter} from "../components/TheFooter/TheFooter";
+import {Header} from "../components/Header/Header";
+import {Footer} from "../components/Footer/TheFooter";
 import styled from "styled-components";
 import Head from "next/head";
 import { operators } from "../constants/operators";
@@ -14,12 +14,13 @@ const StyledWrapper = styled.div`
   min-height: 100vh;
 `;
 
-interface IOperatorsContext extends IOperator {
-  setOperators: (newOperator: IOperator) => void;
-}
-
 export function setOperators(newOperator: IOperator) {
-  if(!operators.find(operator => operator.name === newOperator.name)) {
+  if (
+    !operators.find(
+      (operator) =>
+        operator.name.toLowerCase() === newOperator.name.toLowerCase()
+    )
+  ) {
     operators.push(newOperator);
   }
 }
@@ -34,11 +35,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Home</title>
       </Head>
       <GlobalStyle />
-      <TheHeader />
+      <Header />
       <OperatorsContext.Provider value={operators}>
         <Component {...pageProps} />
       </OperatorsContext.Provider>
-      <TheFooter />
+      <Footer />
     </StyledWrapper>
   );
 }

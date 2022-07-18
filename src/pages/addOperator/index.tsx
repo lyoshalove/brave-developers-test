@@ -65,7 +65,7 @@ const Index: NextPage = () => {
           <TheButton
             center
             onClick={() => {
-              setOperators({ id: Math.random(), name: name });
+              setOperators({ id: name, name: name });
               router.push("/");
             }}
           >
