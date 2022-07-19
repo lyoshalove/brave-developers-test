@@ -37,10 +37,22 @@ const StyledTitle = styled.h1`
 const Index: NextPage = () => {
   const [name, setName] = useState<string>("");
   const router = useRouter();
+  const btnDisabledRule = !isEmpty(name);
 
   function changeInputValue(data: string, value: string) {
     if (data === "name") {
       setName(value);
+    }
+  }
+
+  function isEmpty(text: string): boolean {
+    return text.trim().length > 0;
+  }
+
+  function addOperator() {
+    if (isEmpty(name)) {
+      setOperators({ id: name, name: name.trim() });
+      router.push("/");
     }
   }
 
@@ -62,13 +74,7 @@ const Index: NextPage = () => {
               changeInputValue={changeInputValue}
             />
           </StyledForm>
-          <TheButton
-            center
-            onClick={() => {
-              setOperators({ id: name, name: name });
-              router.push("/");
-            }}
-          >
+          <TheButton disabled={btnDisabledRule} center onClick={addOperator}>
             Добавить
           </TheButton>
         </Container>

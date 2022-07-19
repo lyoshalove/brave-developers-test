@@ -45,9 +45,14 @@ const StyledForm = styled.form`
 `;
 
 const StyledLogo = styled.div`
-  width: 150px;
   margin: 0 auto;
   text-align: center;
+  word-break: break-word;
+
+  svg {
+    max-width: 150px;
+    width: 100%;
+  }
 `;
 
 const StyledBack = styled.button`
