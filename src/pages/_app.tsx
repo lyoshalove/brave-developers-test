@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import {GlobalStyle} from "../styles/GlobalStyles";
 import {Header} from "../components/Header/Header";
-import {Footer} from "../components/Footer/TheFooter";
+import {Footer} from "../components/Footer/Footer";
 import styled from "styled-components";
 import Head from "next/head";
 import { operators } from "../constants/operators";

@@ -49,10 +49,18 @@ const Index: NextPage = () => {
     return text.trim().length > 0;
   }
 
+  function checkSpecialSymbols(text: string): boolean {
+    const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    
+    return !specialSymbols.test(text);
+  }
+
   function addOperator() {
-    if (isEmpty(name)) {
+    if (isEmpty(name) && checkSpecialSymbols(name)) {
       setOperators({ id: name, name: name.trim() });
       router.push("/");
+    } else if (!checkSpecialSymbols(name)) {
+      alert('Имя оператора не может содержать спец. символы');
     }
   }
 
