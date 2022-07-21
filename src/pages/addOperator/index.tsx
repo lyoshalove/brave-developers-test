@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { setOperators } from '../_app';
 import { NextPage } from 'next';
+import { isEmpty } from '../../utils/isEmpty';
 
 const StyledAddOperator = styled.section`
   max-width: 500px;
@@ -45,12 +46,9 @@ const Index: NextPage = () => {
     }
   }
 
-  function isEmpty(text: string): boolean {
-    return text.trim().length > 0;
-  }
 
   function checkSpecialSymbols(text: string): boolean {
-    const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
     
     return !specialSymbols.test(text);
   }

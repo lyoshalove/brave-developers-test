@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from "next/link";
+import { sliceString } from '../../utils/getSlicedString';
 
 const StyledOperator = styled.a`
   flex: 0 1 calc(33.3% - 10px);
@@ -34,12 +35,6 @@ interface IProps {
 }
 
 export const Operator: React.FC<IProps> = ({ name, Svg }) => {
-  function sliceString(name: string) {
-    if (name.length > 9) {
-      return `${name.slice(0, 9)}...`;
-    }
-    return name;
-  }
 
   return (
     <Link href={`/payment/${name}`}>
