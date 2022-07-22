@@ -28,7 +28,7 @@ const StyledAddOperator = styled.section`
 `;
 
 const StyledForm = styled.form`
-  margin: 30px 0;
+  margin: 30px 0 20px;
 `;
 
 const StyledTitle = styled.h1`
@@ -46,14 +46,15 @@ const Index: NextPage = () => {
     }
   }
 
-
   function checkSpecialSymbols(text: string): boolean {
     const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
     
     return !specialSymbols.test(text);
   }
 
-  function addOperator() {
+  function addOperator(e?: any) {
+    e.preventDefault();
+
     if (isEmpty(name) && checkSpecialSymbols(name)) {
       setOperators({ id: name, name: name.trim() });
       router.push("/");
@@ -70,7 +71,7 @@ const Index: NextPage = () => {
       <StyledAddOperator>
         <Container>
           <StyledTitle>Добавить нового оператора</StyledTitle>
-          <StyledForm action="#">
+          <StyledForm action="#" onSubmit={(e) => addOperator(e)}>
             <InputContainer
               width100
               type={"text"}

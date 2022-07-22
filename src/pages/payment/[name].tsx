@@ -41,7 +41,7 @@ const StyledTitle = styled.h1`
 `;
 
 const StyledForm = styled.form`
-  margin: 35px 0 25px;
+  margin: 30px 0 20px;
 `;
 
 const StyledLogo = styled.div`
@@ -84,21 +84,23 @@ const PaymentPage: NextPage = () => {
 
   const OperatorName: string | undefined = operators.find(operator => operator.name === name)?.name;
 
-  async function pay() {
+  const sendRequestForPay = () => {
+    const response = new Promise<IPayResponse>((resolve) => {
+      setTimeout(() => {
+        Math.random() < 0.5
+          ? resolve({ message: "Оплата прошла успешно", payed: true })
+          : resolve({ message: "Оплата не прошла", payed: false });
+      }, 1500);
+    });
+
+    return response;
+  };
+
+  async function pay(e?: any) {
+    e.preventDefault();
+
     try {
       setIsLoading(true);
-
-      const sendRequestForPay = () => {
-        const response = new Promise<IPayResponse>((resolve) => {
-          setTimeout(() => {
-            Math.random() < 0.5
-              ? resolve({ message: "Оплата прошла успешно", payed: true })
-              : resolve({ message: "Оплата не прошла", payed: false });
-          }, 1500);
-        });
-
-        return response;
-      };
 
       await sendRequestForPay().then((data) => setIsPayed(data));
       await setIsLoading(false);
@@ -129,14 +131,12 @@ const PaymentPage: NextPage = () => {
       </Head>
       <Container>
         <StyledPayment>
-          <StyledBack onClick={goToBack}>
-            Назад
-          </StyledBack>
+          <StyledBack onClick={goToBack}>Назад</StyledBack>
           <StyledLogo>
             {OperatorImage ? <OperatorImage /> : <h2>{OperatorName}</h2>}
           </StyledLogo>
           <StyledTitle>Введите свои данные</StyledTitle>
-          <StyledForm action="#">
+          <StyledForm action="#" onSubmit={(e) => pay(e)}>
             <InputContainer
               width100
               type={"tel"}
@@ -153,14 +153,10 @@ const PaymentPage: NextPage = () => {
               data={"amount"}
               changeInputValue={changeInputValue}
             />
+            <TheButton disabled={buttonDisabledRule} onClick={pay} center>
+              {isLoading ? <Loader /> : "Оплатить"}
+            </TheButton>
           </StyledForm>
-          <TheButton
-            disabled={buttonDisabledRule}
-            onClick={() => pay()}
-            center
-          >
-            {isLoading ? <Loader /> : "Оплатить"}
-          </TheButton>
         </StyledPayment>
       </Container>
       {isPayed.message && (

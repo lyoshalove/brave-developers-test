@@ -13,11 +13,13 @@ const StyledOperator = styled.a`
   background: none;
   transition: 0.3s;
   cursor: pointer;
+  max-width: calc(33.3% - 10px);
   &:hover {
     border: 2px solid #3a86ff;
   }
   @media (max-width: 768px) {
     flex: 0 1 calc(50% - 7.5px);
+    max-width: calc(50% - 7.5px);
   }
   @media (max-width: 480px) {
     width: 70%;
