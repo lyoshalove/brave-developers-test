@@ -23,6 +23,7 @@ const StyledOperator = styled.a`
   }
   @media (max-width: 480px) {
     width: 70%;
+    max-width: 80%;
   }
 
   svg {
