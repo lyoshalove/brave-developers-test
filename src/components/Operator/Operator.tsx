@@ -5,7 +5,7 @@ import { StyledOperator } from './styles';
 
 interface IProps {
   name: string;
-  Svg?: () => React.ReactNode | string;
+  Svg?: () => JSX.Element | string;
 }
 
 export const Operator: React.FC<IProps> = ({ name, Svg }) => {
