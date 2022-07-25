@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { theme } from "../../styles/theme";
 
 export const StyledOperator = styled.a`
+  height: 50px;
   flex: 0 1 calc(33.3% - 10px);
   border: 2px solid ${theme.colors.border};
   border-radius: 8px;
-  padding: 8px 10px;
+  padding: 8px 9px;
   display: flex;
   justify-content: center;
   background: none;

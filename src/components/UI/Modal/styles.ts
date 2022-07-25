@@ -3,8 +3,7 @@ import { theme } from "../../../styles/theme";
 
 export const StyledModal = styled.div`
   min-height: 100vh;
-  background: ${theme.colors.primary};
-  opacity: 0.8;
+  background: rgba(${theme.colors.primaryRGBA}, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;

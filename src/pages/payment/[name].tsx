@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { Container } from "../../components/Container/Container";
 import { StyledBack, StyledForm, StyledLogo, StyledPayment, StyledTitle } from "./styles";
+import Image from "next/image";
 
 
 const PaymentPage: NextPage = () => {
@@ -27,10 +28,7 @@ const PaymentPage: NextPage = () => {
     +amount >= 1 &&
     +amount <= 1000
   );
-  const OperatorImage = operators.find((operator) => operator.name === name)
-    ?.image as React.ElementType;
-
-  const OperatorName: string | undefined = operators.find(operator => operator.name === name)?.name;
+  const Operator = operators.find((operator) => operator.name === name);
 
   const sendRequestForPay = () => {
     const response = new Promise<IPayResponse>((resolve) => {
@@ -81,7 +79,11 @@ const PaymentPage: NextPage = () => {
         <StyledPayment>
           <StyledBack onClick={goToBack}>Назад</StyledBack>
           <StyledLogo>
-            {OperatorImage ? <OperatorImage /> : <h2>{OperatorName}</h2>}
+            {Operator?.image ? (
+              <Image src={Operator.image} alt={Operator.name} width="150" height="30" />
+            ) : (
+              <h2>{Operator?.name}</h2>
+            )}
           </StyledLogo>
           <StyledTitle>Введите свои данные</StyledTitle>
           <StyledForm action="#" onSubmit={(e) => pay(e)}>
