@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <StyledWrapper>
       <Head>
-        <title>Home</title>
+        <title>Главная</title>
       </Head>
       <GlobalStyle />
       <Header />

@@ -1,11 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledContainer = styled.div`
-  max-width: 1200px;
-  padding: 0 15px;
-  margin: 0 auto;
-`;
+import { StyledContainer } from './styles';
 
 interface IProps {
   children: React.ReactNode

@@ -1,32 +1,6 @@
 import React, { ChangeEvent } from "react";
-import styled from "styled-components";
 import InputMask from 'react-input-mask';
-
-const StyledInputContainer = styled.div`
-  position: relative;
-  &:not(:last-child) {
-    margin: 0 0 15px;
-  }
-
-  input {
-    border: 2px solid #c4c4c4;
-    border-radius: 10px;
-    padding: 14px 20px;
-    color: #3a86ff;
-    transition: 0.3s;
-    outline: none;
-
-    &:focus {
-      border: 2px solid #3a86ff;
-    }
-  }
-`;
-
-const StyledSpan = styled.span`
-  color: #3a86ff;
-  font-size: 14px;
-  user-select: none;
-`;
+import { StyledInputContainer, StyledSpan } from './styles';
 
 interface IInputContainer {
   type: string;

@@ -1,40 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import Link from "next/link";
 import { sliceString } from '../../utils/getSlicedString';
-
-const StyledOperator = styled.a`
-  flex: 0 1 calc(33.3% - 10px);
-  border: 2px solid #c3c3c3;
-  border-radius: 8px;
-  padding: 8px 10px;
-  display: flex;
-  justify-content: center;
-  background: none;
-  transition: 0.3s;
-  cursor: pointer;
-  max-width: calc(33.3% - 10px);
-  &:hover {
-    border: 2px solid #3a86ff;
-  }
-  @media (max-width: 768px) {
-    flex: 0 1 calc(50% - 7.5px);
-    max-width: calc(50% - 7.5px);
-  }
-  @media (max-width: 480px) {
-    width: 75%;
-    max-width: 75%;
-  }
-
-  svg {
-    width: 150px;
-    height: 30px;
-  }
-`;
+import { StyledOperator } from './styles';
 
 interface IProps {
   name: string;
-  Svg?: () => any;
+  Svg?: () => React.ReactNode | string;
 }
 
 export const Operator: React.FC<IProps> = ({ name, Svg }) => {

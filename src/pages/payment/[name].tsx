@@ -1,6 +1,5 @@
 import { NextPage } from "next";
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { FormEvent, useState } from "react";
 import {InputContainer} from "../../components/UI/InputContainer/InputContainer";
 import {Loader} from "../../components/UI/Loader/Loader";
 import {TheButton} from "../../components/UI/TheButton/TheButton";
@@ -10,58 +9,7 @@ import {Modal} from "../../components/UI/Modal/Modal";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { Container } from "../../components/Container/Container";
-
-const StyledPayment = styled.div`
-  max-width: 400px;
-  margin: 0 auto;
-  animation: fadeInTop 0.8s forwards;
-
-  @keyframes fadeInTop {
-    0% {
-      transform: translate(0, -150px);
-      opacity: 0;
-    }
-    ,
-    100% {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-  }
-`;
-
-const StyledTitle = styled.h1`
-  font-size: 34px;
-  text-align: center;
-  
-  @media (max-width: 768px) {
-    .payment__title {
-      font-size: 24px;
-    }
-  }
-`;
-
-const StyledForm = styled.form`
-  margin: 30px 0 20px;
-`;
-
-const StyledLogo = styled.div`
-  margin: 0 auto;
-  text-align: center;
-  word-break: break-word;
-
-  svg {
-    max-width: 150px;
-    width: 100%;
-  }
-`;
-
-const StyledBack = styled.button`
-  background: none;
-  border: none;
-  color: #3a86ff;
-  font-weight: bold;
-  margin: 0 0 20px;
-`;
+import { StyledBack, StyledForm, StyledLogo, StyledPayment, StyledTitle } from "./styles";
 
 
 const PaymentPage: NextPage = () => {
@@ -96,8 +44,8 @@ const PaymentPage: NextPage = () => {
     return response;
   };
 
-  async function pay(e?: any) {
-    e.preventDefault();
+  async function pay(e?: FormEvent) {
+    e?.preventDefault();
 
     try {
       setIsLoading(true);

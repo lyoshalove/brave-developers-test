@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { FormEvent, useState } from 'react';
 import {Container} from '../../components/Container/Container';
 import {InputContainer} from '../../components/UI/InputContainer/InputContainer';
 import {TheButton} from '../../components/UI/TheButton/TheButton';
@@ -8,32 +7,7 @@ import Head from 'next/head';
 import { setOperators } from '../_app';
 import { NextPage } from 'next';
 import { isEmpty } from '../../utils/isEmpty';
-
-const StyledAddOperator = styled.section`
-  max-width: 500px;
-  margin: 0 auto;
-  animation: fadeInTop 0.8s forwards;
-
-  @keyframes fadeInTop {
-    0% {
-      transform: translate(0, -150px);
-      opacity: 0;
-    }
-    ,
-    100% {
-      transform: translate(0, 0);
-      opacity: 1;
-    }
-  }
-`;
-
-const StyledForm = styled.form`
-  margin: 30px 0 20px;
-`;
-
-const StyledTitle = styled.h1`
-  text-align: center;
-`;
+import { StyledAddOperator, StyledForm, StyledTitle } from './styles';
 
 const Index: NextPage = () => {
   const [name, setName] = useState<string>("");
@@ -47,13 +21,13 @@ const Index: NextPage = () => {
   }
 
   function checkSpecialSymbols(text: string): boolean {
-    const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,. <>\/?~]/;
+    const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     
     return !specialSymbols.test(text);
   }
 
-  function addOperator(e?: any) {
-    e.preventDefault();
+  function addOperator(e?: FormEvent) {
+    e?.preventDefault();
 
     if (isEmpty(name) && checkSpecialSymbols(name)) {
       setOperators({ id: name, name: name.trim() });

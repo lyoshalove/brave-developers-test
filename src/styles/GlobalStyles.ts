@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { theme } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -22,13 +23,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   button, input, textarea {
-    color: #fff;
+    color: ${theme.colors.secondary};
     font-size: inherit;
   }
 
   body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
+    color: ${theme.colors.primary}
   }
 
   .center {
