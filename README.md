@@ -1,4 +1,4 @@
-View demo: https://brave-developers-test-red.vercel.app/
+View demo: https://brave-developers-test-lilac.vercel.app/
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
