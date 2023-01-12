@@ -1,17 +1,23 @@
 import { NextPage } from "next";
 import React, { FormEvent, useState } from "react";
-import {InputContainer} from "../../components/UI/InputContainer/InputContainer";
-import {Loader} from "../../components/UI/Loader/Loader";
-import {TheButton} from "../../components/UI/TheButton/TheButton";
-import {operators} from "../../constants/operators";
+import { InputContainer } from "../../components/UI/InputContainer/InputContainer";
+import { Loader } from "../../components/UI/Loader/Loader";
+import { TheButton } from "../../components/UI/TheButton/TheButton";
+import { operators } from "../../constants/operators";
 import { IPayResponse } from "../../types/PayResponse";
-import {Modal} from "../../components/UI/Modal/Modal";
+import { Modal } from "../../components/UI/Modal/Modal";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { Container } from "../../components/Container/Container";
-import { StyledBack, StyledForm, StyledLogo, StyledPayment, StyledTitle } from "./styles";
+import {
+  StyledBack,
+  StyledForm,
+  StyledLogo,
+  StyledPayment,
+  StyledTitle,
+} from "./styles";
 import Image from "next/image";
-
+import { getRandomBoolean } from "../../utils/getRandomBoolean";
 
 const PaymentPage: NextPage = () => {
   const [phone, setPhone] = useState<string>("");
@@ -33,7 +39,7 @@ const PaymentPage: NextPage = () => {
   const sendRequestForPay = () => {
     const response = new Promise<IPayResponse>((resolve) => {
       setTimeout(() => {
-        Math.random() < 0.5
+        getRandomBoolean()
           ? resolve({ message: "Оплата прошла успешно", payed: true })
           : resolve({ message: "Оплата не прошла", payed: false });
       }, 1500);
@@ -80,7 +86,12 @@ const PaymentPage: NextPage = () => {
           <StyledBack onClick={goToBack}>Назад</StyledBack>
           <StyledLogo>
             {Operator?.image ? (
-              <Image src={Operator.image} alt={Operator.name} width="150" height="30" />
+              <Image
+                src={Operator.image}
+                alt={Operator.name}
+                width="150"
+                height="30"
+              />
             ) : (
               <h2>{Operator?.name}</h2>
             )}
