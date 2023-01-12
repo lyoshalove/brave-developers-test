@@ -8,6 +8,7 @@ import { setOperators } from '../_app';
 import { NextPage } from 'next';
 import { isEmpty } from '../../utils/isEmpty';
 import { StyledAddOperator, StyledForm, StyledTitle } from './styles';
+import { checkSpecialSymbols } from '../../utils/checkSpecialSymbols';
 
 const Index: NextPage = () => {
   const [name, setName] = useState<string>("");
@@ -18,12 +19,6 @@ const Index: NextPage = () => {
     if (data === "name") {
       setName(value);
     }
-  }
-
-  function checkSpecialSymbols(text: string): boolean {
-    const specialSymbols = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    
-    return !specialSymbols.test(text);
   }
 
   function addOperator(e?: FormEvent) {

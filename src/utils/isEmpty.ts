@@ -1,3 +1,1 @@
-export function isEmpty(text: string): boolean {
-  return text.trim().length > 0;
-}
+export const isEmpty = (text: string): boolean => text.trim().length > 0;
